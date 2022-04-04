@@ -1,7 +1,9 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { connect } from 'react-redux';
+import { login } from '../../../Redux/auth-reducer';
 
-export function Login() {
+function Login(props) {
   return (
     <div>
       <h1>Login</h1>
@@ -17,10 +19,8 @@ export function Login() {
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+          props.login(values);
+          setSubmitting(false);
         }}
       >
         {({ isSubmitting }) => (
@@ -45,3 +45,5 @@ export function Login() {
     </div>
   );
 }
+
+export default connect(null, { login })(Login);

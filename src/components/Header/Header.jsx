@@ -7,7 +7,16 @@ export default function Header(props) {
     <div className={s.header}>
       Header
       <div className={s.login}>
-        {props.isAuth ? props.login : <NavLink to="/login">login</NavLink>}
+        {props.isAuth ? (
+          <div>
+            {props.login} -
+            <NavLink to="/profile" onClick={props.logout}>
+              logout
+            </NavLink>
+          </div>
+        ) : (
+          <NavLink to="/login">login</NavLink>
+        )}
       </div>
     </div>
   );
