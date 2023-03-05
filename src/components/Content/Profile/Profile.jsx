@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Profile.module.scss';
 import profile from './img/profile.png';
 import preLoader from '../../../common/Preloader/Spinner-2.gif';
-import StatusProfile from './StatusProfile';
+import StatusProfile from './StatusProfileFunc';
 
 export default function Profile(props) {
   if (!props.profile) {
