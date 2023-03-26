@@ -1,11 +1,27 @@
-import React from 'react';
-import {NavLink} from 'react-router-dom';
+import React, {useState} from 'react';
+import {NavLink, useLocation} from 'react-router-dom';
 import s from './Header.module.scss';
 
 export default function Header(props) {
+    const [search, setSearch] = useState('')
+
+    let usersURL = useLocation()
+
+    const onChangeHandler = (e) => {
+        setSearch(e.target.value)
+    }
     return (
         <div className={s.header}>
-            Header
+            <div>
+                <span className={s.span}>Header</span>
+                {usersURL.pathname === '/users' &&
+                    <>
+                        <input placeholder='поиск...' value={search} onChange={onChangeHandler}/>
+                        <button>Поиск</button>
+                    </>
+
+                }
+            </div>
             <div className={s.login}>
                 {props.isAuth ? (
                     <div>

@@ -26,7 +26,7 @@ const StatusProfile = (props) => {
         if(status !== props.status) {
             setStatus(props.status)
         }
-    },[])
+    },[props.status])
 
 
     return (

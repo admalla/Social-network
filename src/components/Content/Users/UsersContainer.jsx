@@ -11,7 +11,9 @@ import Users from './Users';
 import preLoader from '../../../common/Preloader/Spinner-2.gif';
 
 class UsersContainer extends React.Component {
+
   componentDidMount() {
+    debugger
     this.props.getUsersThunk(this.props.currentPage, this.props.pageSize);
   }
   onChangedPage = (pageNamber) => {

@@ -2,6 +2,7 @@ import React from 'react';
 import Userinfo from './UserInfo';
 import s from './users.module.scss';
 import Userava from './Avatar';
+import {PaginatedItems} from "../../Pagination/PaginatedItems";
 
 const Users = (props) => {
   let pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -12,20 +13,13 @@ const Users = (props) => {
   }
   return (
     <div>
-      <div className={s.pages}>
-        {pages.map((p) => {
-          return (
-            <span
-              className={props.currentPage === p && s.selectPage}
-              onClick={() => {
-                props.onChangedPage(p);
-              }}
-            >
-              {p}
-            </span>
-          );
-        })}
-      </div>
+      <PaginatedItems
+        items={pages}
+        currentItems={props.currentPage}
+        pageCount={pageCount}
+        itemsPerPage={props.pageSize}
+        onChangePage={props.onChangedPage}
+      />
 
       {props.users.map((u) => {
         return (
